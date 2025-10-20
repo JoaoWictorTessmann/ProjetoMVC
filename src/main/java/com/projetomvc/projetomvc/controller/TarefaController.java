@@ -30,7 +30,7 @@ public class TarefaController {
         return "index";
     }
 
-    @PostMapping("/adicionar")
+    @PostMapping("/Adicionar")
     public String adicionarTarefa(@ModelAttribute Tarefa novaTarefa) {
         tarefaRepository.save(novaTarefa);
         return "redirect:/";

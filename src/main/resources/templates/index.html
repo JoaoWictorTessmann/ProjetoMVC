@@ -16,9 +16,33 @@
         </form>
         <hr/>
         <h2>Tarefas Cadastradas</h2>
-        <table>
-
+    <table>
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Descrição</th>
+                    <th>Status</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${paginaTarefas.empty}">
+                    <td colspan="4" style="text-align: center">
+                        Nenhuma tarefa cadastrada.
+                    </td>
+                </tr>
+                <tr th:each="tarefa : ${paginaTarefas.content}">
+                    <td th:text="${tarefa.titulo}">Título da Tarefa</td>
+                    <td th:text="${tarefa.descricao}">Descrição da Tarefa</td>
+                    <td th:text="${tarefa.concluida} ? 'Concluída' : 'Pendente'">Pendente</td>
+                    <td th:text="${tarefa.dataCriacao}">Data de Criação</td>
+                </tr>
+            </tbody>
         </table>
-    </div>
+        <div class = "pagination">
+            <span>Página <span th:text="${paginaTarefas.number + 1}">1</span> de 
+            <span th:text="${paginaTarefas.totalPages}">1</span></span>              
+        </div>
+        </div>
 </body>
 </html>
