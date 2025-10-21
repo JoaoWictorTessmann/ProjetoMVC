@@ -1,4 +1,4 @@
-body {
+body { 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f6f8;
     margin: 0;
@@ -74,6 +74,46 @@ th {
 
 td {
     max-width: 300px;
+}
+
+td.acao {
+    width: 120px;
+    text-align: center;
+}
+
+.btn-excluir {
+    display: inline-block;
+    background-color: #e63946;
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.btn-excluir:hover {
+    background-color: #d62828;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-excluir:active {
+    background-color: #ba1a1a;
+    transform: scale(0.98);
+}
+
+.btn-excluir:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
 table tr:nth-child(even) {

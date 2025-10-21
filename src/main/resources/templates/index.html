@@ -24,6 +24,7 @@
                     <th>Descrição</th>
                     <th>Status</th>
                     <th>Data</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,6 +38,7 @@
                     <td th:text="${tarefa.descricao}">Descrição da Tarefa</td>
                     <td th:text="${tarefa.concluida} ? 'Concluída' : 'Pendente'">Pendente</td>
                     <td th:text="${tarefa.dataCriacao}">Data de Criação</td>
+                    <td><a class="btn-excluir" th:href="@{/Excluir(id=${tarefa.id})}">Excluir</a></td>
                 </tr>
             </tbody>
         </table>

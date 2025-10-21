@@ -35,4 +35,18 @@ public class TarefaController {
         tarefaRepository.save(novaTarefa);
         return "redirect:/";
     }
+    @GetMapping("/Excluir")
+    public String excluirTarefa(@RequestParam Long id){
+        tarefaRepository.deleteById(id);
+        return "redirect:/";
+    }
+    @PostMapping("/AtualizarStatus")
+    public String atualizarStatusTarefa(@RequestParam Long id){
+        Tarefa tarefa = tarefaRepository.findById(id).orElse(null);
+        if(tarefa != null){
+            tarefa.setConcluida(!tarefa.isConcluida());
+            tarefaRepository.save(tarefa);
+        }
+        return "redirect:/";
+    }
 }
