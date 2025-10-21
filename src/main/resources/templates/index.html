@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>Lista de Tarefas</title>
 </head>
 <body>
-    <div>
+    <div class="container">
         <h1>Minhas Tarefas</h1>
         <h2>Adicionar Nova Tarefa</h2>
         <form th:action="@{/Adicionar}" th:object= "${novaTarefa}" method="post">
@@ -43,6 +44,16 @@
             <span>Página <span th:text="${paginaTarefas.number + 1}">1</span> de 
             <span th:text="${paginaTarefas.totalPages}">1</span></span>              
         </div>
+        <div class="pagination-buttons">
+            <a th:if="${!paginaTarefas.first}"
+                th:href="@{/?page={p}(p=${paginaTarefas.number - 1})}"
+                class="arrow">&lt;
+            </a>
+            <a th:if="${!paginaTarefas.last}"
+                th:href="@{/?page={p}(p=${paginaTarefas.number + 1})}"
+                class="arrow">&gt;
+            </a>
         </div>
+    </div>
 </body>
 </html>
