@@ -1,6 +1,8 @@
 package com.projetomvc.projetomvc.controller;
 
+import java.util.Optional;
 
+import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -35,18 +37,42 @@ public class TarefaController {
         tarefaRepository.save(novaTarefa);
         return "redirect:/";
     }
+
     @GetMapping("/Excluir")
-    public String excluirTarefa(@RequestParam Long id){
+    public String excluirTarefa(@RequestParam Long id) {
         tarefaRepository.deleteById(id);
         return "redirect:/";
     }
-    @PostMapping("/AtualizarStatus")
-    public String atualizarStatusTarefa(@RequestParam Long id){
+
+    @GetMapping("/AtualizarStatus")
+    public String atualizarStatusTarefa(@RequestParam Long id) {
         Tarefa tarefa = tarefaRepository.findById(id).orElse(null);
-        if(tarefa != null){
+        if (tarefa != null) {
             tarefa.setConcluida(!tarefa.isConcluida());
             tarefaRepository.save(tarefa);
         }
         return "redirect:/";
     }
-}
+
+    @GetMapping("/Editar")
+    public String editarTarefasPorId(@RequestParam("id") Long id, @RequestParam(defaultValue = "0") int page,
+            Model model) {
+
+        int tamanhoPagina = 5;
+        Pageable configuracaoPagina = PageRequest.of(page, tamanhoPagina);
+        Page<Tarefa> paginaTarefas = tarefaRepository.findAll(configuracaoPagina);
+        model.addAttribute("paginaTarefas", paginaTarefas);
+        Tarefa tarefaEditar = tarefaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Tarefa não encontrada"));
+        model.addAttribute("tarefaEditar", tarefaEditar);
+        model.addAttribute("novaTarefa", new Tarefa());
+            return "editar";
+        }
+    
+        @PostMapping("/AtualizarTarefa")
+        public String atualizarTarefa(@ModelAttribute Tarefa tarefaAtualizada) {
+            tarefaRepository.save(tarefaAtualizada);
+            return "redirect:/";
+        }
+    }
+

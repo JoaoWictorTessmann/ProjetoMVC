@@ -116,6 +116,62 @@ td.acao {
     box-shadow: none;
 }
 
+.btn-concluir {
+    display: inline-block;
+    background-color: #11a811;
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.btn-concluir:hover {
+    background-color: #0c940c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-concluir:active {
+    background-color: #197a19;
+    transform: scale(0.98);
+}
+
+.btn-editar {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.btn-editar:hover {
+    background-color: #1e6fc5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-editar:active {
+    background-color: #0b54a3;
+    transform: scale(0.98);
+}
+
 table tr:nth-child(even) {
     background-color: #cecdcd;
 }
@@ -152,4 +208,14 @@ table tr:nth-child(even) {
 
 .pagination-buttons .arrow:hover {
     background-color: #0056b3;
+}
+
+.status-concluida {
+  color: green;
+  font-weight: bold;
+}
+
+.status-pendente {
+  color: red;
+  font-weight: bold;
 }

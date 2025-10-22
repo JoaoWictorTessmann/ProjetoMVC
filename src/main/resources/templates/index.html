@@ -34,11 +34,35 @@
                     </td>
                 </tr>
                 <tr th:each="tarefa : ${paginaTarefas.content}">
-                    <td th:text="${tarefa.titulo}">Título da Tarefa</td>
-                    <td th:text="${tarefa.descricao}">Descrição da Tarefa</td>
-                    <td th:text="${tarefa.concluida} ? 'Concluída' : 'Pendente'">Pendente</td>
-                    <td th:text="${tarefa.dataCriacao}">Data de Criação</td>
-                    <td><a class="btn-excluir" th:href="@{/Excluir(id=${tarefa.id})}">Excluir</a></td>
+                    <td th:text="${tarefa.titulo}">
+                        Título da Tarefa
+                    </td>
+                    <td th:text="${tarefa.descricao}">
+                        Descrição da Tarefa
+                    </td>
+                    <td th:classappend="${tarefa.concluida} ? 'status-concluida' : 'status-pendente'"
+                        th:text="${tarefa.concluida ? 'Concluída' : 'Pendente'}">
+                        Pendente
+                    </td>
+                    <td th:text="${tarefa.dataCriacao}">
+                        Data de Criação
+                    </td>
+                    <td><a class="btn-excluir"
+                            th:if="${!tarefa.concluida}" 
+                            th:href="@{/Excluir(id=${tarefa.id})}">
+                            Excluir
+                        </a>
+                        <a class="btn-editar"
+                            th:if="${!tarefa.concluida}" 
+                            th:href="@{/Editar(id=${tarefa.id})}">
+                            Editar
+                        </a>
+                        <a class="btn-concluir" 
+                            th:if="${!tarefa.concluida}" 
+                            th:href="@{/AtualizarStatus(id=${tarefa.id})}">
+                            Concluir
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table>

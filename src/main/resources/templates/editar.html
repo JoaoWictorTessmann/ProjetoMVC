@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Editar Tarefa</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Editor de Tarefa</h1>
+        <hr/>
+        <h2>Tarefa Selecionada</h2>
+    <table>
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Descrição</th>
+                    <th>Status</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${tarefaEditar != null}">
+                    <td th:text="${tarefaEditar.titulo}">
+                        Título da Tarefa
+                    </td>
+                    <td th:text="${tarefaEditar.descricao}">
+                        Descrição da Tarefa
+                    </td>
+                    <td th:classappend="${tarefaEditar.concluida} ? 'status-concluida' : 'status-pendente'"
+                        th:text="${tarefaEditar.concluida ? 'Concluída' : 'Pendente'}">
+                        Pendente
+                    </td>
+                    <td th:text="${tarefaEditar.dataCriacao}">
+                        Data de Criação
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr/>
+        <h2>Editar Tarefa</h2>
+            <form th:action="@{/AtualizarTarefa(id=${tarefaEditar.id})}" th:object="${tarefaEditar}" method="post">
+                    <input type="text" th:field="*{titulo}" placeholder="Título da Tarefa" required/>
+                    <input type="text" th:field="*{descricao}" placeholder="Descrição da Tarefa"/>
+                    <button type="submit">Salvar</button>
+            </form>
+    </div>
+</body>
+</html>
+
