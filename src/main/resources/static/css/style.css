@@ -76,11 +76,6 @@ td {
     max-width: 300px;
 }
 
-td.acao {
-    width: 120px;
-    text-align: center;
-}
-
 .btn-excluir {
     display: inline-block;
     background-color: #e63946;

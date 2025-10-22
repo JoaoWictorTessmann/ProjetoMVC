@@ -1,8 +1,5 @@
 package com.projetomvc.projetomvc.controller;
 
-import java.util.Optional;
-
-import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
