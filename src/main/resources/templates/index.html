@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>Lista de Tarefas</title>
 </head>
+
 <body>
     <div class="container">
         <h1>Minhas Tarefas</h1>
         <h2>Adicionar Nova Tarefa</h2>
-        <form th:action="@{/Adicionar}" th:object= "${novaTarefa}" method="post">
-            <input type="text" th:field="*{titulo}" placeholder="Título da Tarefa" required/>
-            <input type="text" th:field="*{descricao}" placeholder="Descrição da Tarefa"/>
+        <form th:action="@{/Adicionar}" th:object="${novaTarefa}" method="post">
+            <input type="text" th:field="*{titulo}" placeholder="Título da Tarefa" required />
+            <input type="text" th:field="*{descricao}" placeholder="Descrição da Tarefa" />
             <button type="submit">Adicionar</button>
         </form>
-        <hr/>
+        <hr />
         <h2>Tarefas Cadastradas</h2>
-    <table>
+        <table>
             <thead>
                 <tr>
                     <th>Título</th>
                     <th>Descrição</th>
                     <th>Status</th>
                     <th>Data</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,23 +40,28 @@
                     <td th:text="${tarefa.descricao}">Descrição da Tarefa</td>
                     <td th:text="${tarefa.concluida} ? 'Concluída' : 'Pendente'">Pendente</td>
                     <td th:text="${tarefa.dataCriacao}">Data de Criação</td>
+                    <td>
+                        <form th:action="@{/remover/{id}(id=${tarefa.id})}" method="post" style="display:inline">
+                            <button type="submit">Remover</button>
+                        </form>
+                    </td>
                 </tr>
             </tbody>
         </table>
-        <div class = "pagination">
-            <span>Página <span th:text="${paginaTarefas.number + 1}">1</span> de 
-            <span th:text="${paginaTarefas.totalPages}">1</span></span>              
-        </div>
-        <div class="pagination-buttons">
-            <a th:if="${!paginaTarefas.first}"
-                th:href="@{/?page={p}(p=${paginaTarefas.number - 1})}"
-                class="arrow">&lt;
-            </a>
-            <a th:if="${!paginaTarefas.last}"
-                th:href="@{/?page={p}(p=${paginaTarefas.number + 1})}"
-                class="arrow">&gt;
-            </a>
+        <div class="pagination">
+            <div th:if="${paginaTarefas.totalPages > 1}">
+                <a th:if="${!paginaTarefas.first}" th:href="@{/(page=${paginaTarefas.number - 1})}"
+                    class="btn">Anterior</a>
+                <span th:each="i : ${#numbers.sequence(0, paginaTarefas.totalPages - 1)}">
+                    <a th:href="@{/(page=${i})}" th:text="${i + 1}"
+                        th:classappend="${i == paginaTarefas.number} ? 'active' : ''" style="margin: 0 5px"></a>
+                </span>
+
+                <a th:if="${!paginaTarefas.last}" th:href="@{/(page=${paginaTarefas.number + 1})}"
+                    class="btn">Próxima</a>
+            </div>
         </div>
     </div>
 </body>
+
 </html>
