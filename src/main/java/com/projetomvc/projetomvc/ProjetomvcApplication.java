@@ -11,5 +11,4 @@ public class ProjetomvcApplication {
 		System.out.println("Projeto MVC iniciado com sucesso!");
 		System.out.println("Servidor rodando em http://localhost:8080");
 	}
-
 }
