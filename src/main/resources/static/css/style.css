@@ -1,21 +1,22 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f6f8;
+    background-color: #121212;
+    color: #e0e0e0;
     margin: 0;
     padding: 20px;
 }
 
 h1 {
-    color: #333;
+    color: #ffffff;
 }
 
 .container {
     max-width: 800px;
     margin: 0 auto;
-    background-color: white;
+    background-color: #1e1e1e;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
 }
 
 form {
@@ -28,15 +29,21 @@ form {
 input[type="text"] {
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #333;
     border-radius: 5px;
     flex: 1;
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+input[type="text"]::placeholder {
+    color: #888;
 }
 
 button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #007bff;
+    background-color: #0d6efd;
     color: white;
     border: none;
     border-radius: 5px;
@@ -45,12 +52,13 @@ button {
 }
 
 button:hover:not(:disabled) {
-    background-color: #0056b3;
+    background-color: #0b5ed7;
 }
 
 button:disabled {
-    background-color: #ccc;
+    background-color: #444;
     cursor: not-allowed;
+    color: #888;
 }
 
 table {
@@ -64,20 +72,25 @@ table {
 th, td {
     padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #333;
 }
 
 th {
-    background-color: #007bff;
+    background-color: #0d6efd;
     color: white;
 }
 
 td {
     max-width: 300px;
+    color: #ddd;
 }
 
 table tr:nth-child(even) {
-    background-color: #cecdcd;
+    background-color: #1f1f1f;
+}
+
+table tr:nth-child(odd) {
+    background-color: #252525;
 }
 
 .pagination {
@@ -85,7 +98,7 @@ table tr:nth-child(even) {
     align-items: center;
     justify-content: space-between;
     font-size: 16px;
-    color: #333;
+    color: #ccc;
 }
 
 .pagination-buttons {
@@ -104,12 +117,26 @@ table tr:nth-child(even) {
     padding: 8px 16px;
     font-size: 18px;
     color: white;
-    background-color: #007bff;
+    background-color: #0d6efd;
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s;
 }
 
 .pagination-buttons .arrow:hover {
-    background-color: #0056b3;
+    background-color: #0b5ed7;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btn-delete:hover {
+    background-color: #bb2d3b;
 }
