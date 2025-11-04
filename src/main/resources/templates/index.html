@@ -40,10 +40,8 @@
                     <td th:text="${tarefa.descricao}">Descrição da Tarefa</td>
                     <td th:text="${tarefa.concluida} ? 'Concluída' : 'Pendente'">Pendente</td>
                     <td th:text="${tarefa.dataCriacao}">Data de Criação</td>
-                    <td>
-                        <form th:action="@{/remover/{id}(id=${tarefa.id})}" method="post" style="display:inline">
-                            <button type="submit">Remover</button>
-                        </form>
+                    <td class="actions">
+                        <a th:href="@{/excluir/{id}(id=${tarefa.id})}" class="btn-delete">Excluir</a>
                     </td>
                 </tr>
             </tbody>

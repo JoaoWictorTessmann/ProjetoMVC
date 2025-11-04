@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.projetomvc.projetomvc.model.Tarefa;
@@ -35,4 +36,11 @@ public class TarefaController {
         tarefaRepository.save(novaTarefa);
         return "redirect:/";
     }
+
+    @GetMapping("/excluir/{id}")
+    public String excluirTarefa(@PathVariable Long id) {
+        tarefaRepository.deleteById(id);
+        return "redirect:/";
+    }
+    
 }
